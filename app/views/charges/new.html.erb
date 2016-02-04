@@ -1,0 +1,41 @@
+<%= image_tag("background.jpg", class: 'bg') %>
+
+<div style="width:140px; height: 100px; margin-right:auto; margin-left:238px; margin-top: 280px;">
+  <%= form_tag charges_path, class: 'button' do %>
+    <%= hidden_field_tag :type, "individual" %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Individual ticket purchase."
+            data-amount="6000"
+            data-locale="auto"
+            date-currency="cad"
+            data-label="Individual Ticket"></script>
+  <% end %>
+  <br>
+  <%= form_tag charges_path, class: 'button' do %>
+    <%= hidden_field_tag :type, "couple" %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Couple's ticket purchase."
+            data-amount="12000"
+            data-locale="auto"
+            date-currency="cad"
+            data-label="Couple Tickets"></script>
+  <% end %>
+</div>

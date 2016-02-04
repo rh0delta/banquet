@@ -1,0 +1,5 @@
+<div class="wrapper">
+
+</div>
+<h2>Thanks, you paid <strong><%= number_to_currency(@amount, unit: '$') %></strong>!</h2>
+<h3>An email has been sent to <%= params[:stripeEmail] %> with your ticket!</h3>
